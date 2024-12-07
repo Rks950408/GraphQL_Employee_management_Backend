@@ -1,0 +1,41 @@
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+}
+
+# Change the Employee type to use this enum in attendance
+type Employee {
+  id: Int!
+  name: String!
+  age: Int!
+  class: String!
+  subjects: [String]!
+  attendance: [AttendanceStatus]!
+  createdAt: String!
+}
+
+# Query type with pagination and filtering
+type Query {
+  listEmployees(page: Int, size: Int, filter: String): [Employee]
+  getEmployee(id: Int!): Employee
+}
+
+# Mutation type for adding and updating employee
+type Mutation {
+  addEmployee(
+    name: String!
+    age: Int!
+    class: String!
+    subjects: [String]!
+    attendance: [AttendanceStatus]!
+  ): Employee
+
+  updateEmployee(
+    id: Int!
+    name: String
+    age: Int
+    class: String
+    subjects: [String]
+    attendance: [AttendanceStatus]
+  ): Employee
+}
